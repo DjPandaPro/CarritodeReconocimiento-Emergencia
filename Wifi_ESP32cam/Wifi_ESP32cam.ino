@@ -5,21 +5,10 @@
 // Este programa envía una imagen si se accede a la IP web, pero si se accede desde Python, envía video por iteraciones. 
 
 
-const char* ssid = "Lab Control-Auto";
-const char* password = "Aneimera2024";
+const char* ssid = "###";
+const char* password = "###";
 
 
-//const char* ssid = "A15 de Jose Matias";
-//const char* password = "12345678";
-
-
-//const char* ssid = "FAM. SALVADOR 2.4G";
-//const char* password = "S@lvador2324";
-
-
-
-//const char* ssid = "REPRESENTANTES_2024";
-//const char* password = "2011200172LMCDJ";
 
 WebServer server(80); //servidor en el puerto 80
 
