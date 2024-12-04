@@ -4,14 +4,14 @@ import threading
 import keyboard
 
 # Configura el puerto serial y la velocidad
-bluetooth = serial.Serial(port='COM4', baudrate=9600, timeout=1)  # Cambia 'COM4' por el puerto asignado
+bluetooth = serial.Serial(port='COM5', baudrate=9600, timeout=1)  # Cambia 'COM4' por el puerto asignado
 
 # Variable para controlar el hilo de ejecución
 running = True
 last_command = None  # Para evitar comandos repetidos
 
 # Variables para la interfaz
-data_label = None  # Etiqueta para mostrar las lecturas
+data_label = None  # Etiqueta para mostrar las wwblecturas
 temp_label = None  # Etiqueta para temperatura y humedad del DHT11
 
 def send_command(command):
@@ -38,24 +38,28 @@ def check_keys():
             send_command("BR")  # Reversa y derecha
         elif keyboard.is_pressed("down") and keyboard.is_pressed("left"):
             send_command("BL")  # Reversa y izquierda
-        elif keyboard.is_pressed("up"):
+        elif keyboard.is_pressed("w"):
             send_command("F")  # Avanzar
-        elif keyboard.is_pressed("down"):
+        elif keyboard.is_pressed("s"):
             send_command("B")  # Retroceder
-        elif keyboard.is_pressed("right"):
+        elif keyboard.is_pressed("d"):
             send_command("R")  # Girar derecha
-        elif keyboard.is_pressed("left"):
+        elif keyboard.is_pressed("a"):
             send_command("L")  # Girar izquierda
         elif keyboard.is_pressed("space"):
             send_command("f")  # Detener movimiento
         elif keyboard.is_pressed("b"):
             send_command("A")  # Activar el buzzer
-        elif keyboard.is_pressed("s"):  # Solicitar lectura del sensor de sonido
+        elif keyboard.is_pressed("ñ"):  # Solicitar lectura del sensor de sonido
             send_command("S")
             receive_data()
         elif keyboard.is_pressed("t"):  # Solicitar lectura del DHT11
             send_command("T")
             receive_data()
+        elif keyboard.is_pressed("o"):  # Acción para la tecla 'o'
+            send_command("O")  # Envía el comando O al Arduino
+        elif keyboard.is_pressed("p"):  # Acción para la tecla 'p'
+            send_command("P")  # Envía el comando P al Arduino
         else:
             send_command("f")  # Si no hay teclas presionadas, detener
 
